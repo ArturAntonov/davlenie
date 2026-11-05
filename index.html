@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Давление — дневник давления для Android</title>
+<meta name="description" content="Дневник артериального давления для Android: быстрый ввод, история с цветовой подсветкой, графики и отправка врачу. Без интернета, данные остаются на телефоне.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232E7D32'/%3E%3Cpath d='M5 18h6l3-8 4 14 3-6h6' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #f8f8fc;
+    --surface: #ffffff;
+    --text: #1b1b21;
+    --muted: #5d5e6b;
+    --line: #e2e2ea;
+    --accent: #3c4ea0;
+    --very-low: #1e5bb8;
+    --low: #b78900;
+    --normal: #2e7d32;
+    --elevated: #d81b60;
+    --high: #c62828;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121318;
+      --surface: #1c1d24;
+      --text: #e4e1e9;
+      --muted: #a9a8b6;
+      --line: #2f303a;
+      --accent: #b8c3ff;
+      --very-low: #82b1ff;
+      --low: #ffd54f;
+      --normal: #81c784;
+      --elevated: #f48fb1;
+      --high: #ff6e6e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121318;
+    --surface: #1c1d24;
+    --text: #e4e1e9;
+    --muted: #a9a8b6;
+    --line: #2f303a;
+    --accent: #b8c3ff;
+    --very-low: #82b1ff;
+    --low: #ffd54f;
+    --normal: #81c784;
+    --elevated: #f48fb1;
+    --high: #ff6e6e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main, header, footer { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  header { padding-top: 20px; }
+  header a { color: var(--muted); text-decoration: none; font-size: 15px; }
+  header a:hover { color: var(--text); }
+  a { color: var(--accent); }
+  h1 { font-size: 40px; line-height: 1.15; margin: 32px 0 8px; }
+  h2 { font-size: 22px; margin: 40px 0 12px; }
+  .lead { font-size: 19px; color: var(--muted); margin: 0 0 24px; }
+  .hero { display: grid; grid-template-columns: 1fr 240px; gap: 32px; align-items: start; }
+  .shot { width: 100%; border-radius: 24px; border: 1px solid var(--line); display: block; }
+  .store {
+    display: inline-block; padding: 10px 18px; border-radius: 12px;
+    background: var(--surface); border: 1px solid var(--line); color: var(--muted); font-size: 15px;
+  }
+  ul.features { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  ul.features b { display: block; }
+  ul.features span { color: var(--muted); }
+  table { border-collapse: collapse; width: 100%; max-width: 420px; }
+  td { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  td:last-child { text-align: right; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 10px; vertical-align: -1px; }
+  .note {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    padding: 16px 20px; color: var(--muted); font-size: 15px;
+  }
+  footer { margin-top: 48px; padding-top: 20px; padding-bottom: 32px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+  footer p { margin: 4px 0; }
+  @media (max-width: 640px) {
+    h1 { font-size: 32px; }
+    .hero { grid-template-columns: 1fr; }
+    .shot { max-width: 260px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+<header><a href="/">← Artur Antonov · приложения</a></header>
+<main>
+  <div class="hero">
+    <div>
+      <h1>Давление</h1>
+      <p class="lead">Дневник артериального давления для Android. Записать измерение — несколько секунд, а история и графики покажут, как давление меняется день ото дня.</p>
+      <p><span class="store">Скоро в RuStore</span></p>
+    </div>
+    <img class="shot" src="screen-home.jpg" width="540" height="1200" alt="Главный экран: последнее измерение, график за неделю и история с цветовой подсветкой">
+  </div>
+
+  <h2>Что умеет</h2>
+  <ul class="features">
+    <li><b>Быстрый ввод</b><span>Верхнее, нижнее и пульс — только цифры. Дата и время ставятся сами, их можно поправить.</span></li>
+    <li><b>История с подсветкой</b><span>Измерения сгруппированы по дням, цвет строки подсказывает, на какие значения обратить внимание.</span></li>
+    <li><b>Графики и средние</b><span>За день, неделю, месяц, три месяца, год или всё время. Отдельно средние утром и вечером.</span></li>
+    <li><b>Отправить врачу или близким</b><span>Картинкой, текстом или таблицей CSV — в любой мессенджер или почту.</span></li>
+    <li><b>До трёх человек на одном телефоне</b><span>У каждого свой дневник: например, у вас и у родителей.</span></li>
+    <li><b>Без интернета</b><span>Приложение не запрашивает никаких разрешений, все данные остаются на телефоне.</span></li>
+  </ul>
+
+  <h2>Что значат цвета</h2>
+  <p>По верхнему давлению, мм рт. ст.</p>
+  <table>
+    <tr><td><span class="dot" style="background: var(--very-low)"></span>Очень низкое</td><td>ниже 70</td></tr>
+    <tr><td><span class="dot" style="background: var(--low)"></span>Пониженное</td><td>70–109</td></tr>
+    <tr><td><span class="dot" style="background: var(--normal)"></span>Норма</td><td>110–129</td></tr>
+    <tr><td><span class="dot" style="background: var(--elevated)"></span>Повышенное</td><td>130–149</td></tr>
+    <tr><td><span class="dot" style="background: var(--high)"></span>Высокое</td><td>150 и выше</td></tr>
+  </table>
+
+  <h2>Важно</h2>
+  <p class="note">Приложение — дневник для личного учёта. Цветовая подсветка носит ознакомительный характер: это не диагноз и не медицинская оценка. Приложение не является медицинским изделием и не заменяет консультацию врача. Если показания или самочувствие вас беспокоят, обратитесь к врачу.</p>
+</main>
+<footer>
+  <p><a href="privacy.html">Политика конфиденциальности</a></p>
+  <p>Связаться: <a href="mailto:artur_septem@vk.com">artur_septem@vk.com</a></p>
+  <p>© 2026 Artur Antonov</p>
+</footer>
+</body>
+</html>
