@@ -15,6 +15,7 @@
     --muted: #5d5e6b;
     --line: #e2e2ea;
     --accent: #3c4ea0;
+    --on-accent: #ffffff;
     --very-low: #1e5bb8;
     --low: #b78900;
     --normal: #2e7d32;
@@ -29,6 +30,7 @@
       --muted: #a9a8b6;
       --line: #2f303a;
       --accent: #b8c3ff;
+      --on-accent: #1b2557;
       --very-low: #82b1ff;
       --low: #ffd54f;
       --normal: #81c784;
@@ -43,6 +45,7 @@
     --muted: #a9a8b6;
     --line: #2f303a;
     --accent: #b8c3ff;
+    --on-accent: #1b2557;
     --very-low: #82b1ff;
     --low: #ffd54f;
     --normal: #81c784;
@@ -67,9 +70,11 @@
   .hero { display: grid; grid-template-columns: 1fr 240px; gap: 32px; align-items: start; }
   .shot { width: 100%; height: auto; border-radius: 24px; border: 1px solid var(--line); display: block; }
   .store {
-    display: inline-block; padding: 10px 18px; border-radius: 12px;
-    background: var(--surface); border: 1px solid var(--line); color: var(--muted); font-size: 15px;
+    display: inline-block; padding: 12px 22px; border-radius: 12px;
+    background: var(--accent); color: var(--on-accent); font-weight: 600; text-decoration: none;
   }
+  .store:hover { opacity: .9; }
+  .store-note { color: var(--muted); font-size: 15px; margin: 8px 0 0; }
   ul.features { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
   ul.features b { display: block; }
   ul.features span { color: var(--muted); }
@@ -97,7 +102,8 @@
     <div>
       <h1>Мониторинг артериального давления</h1>
       <p class="lead">Дневник артериального давления для Android. Записать измерение — несколько секунд, а история и графики покажут, как давление меняется день ото дня.</p>
-      <p><span class="store">Скоро в RuStore</span></p>
+      <p><a class="store" href="https://www.rustore.ru/catalog/app/ru.artur_ant.monitor.davlenie.app">Скачать в RuStore</a></p>
+      <p class="store-note">Бесплатно, без рекламы. Android 8 и новее.</p>
     </div>
     <img class="shot" src="screen-home.jpg" width="540" height="960" alt="Главный экран: последнее измерение, график за неделю и история с цветовой подсветкой">
   </div>
